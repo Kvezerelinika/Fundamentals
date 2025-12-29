@@ -3,16 +3,12 @@ import bcrypt
 name = input("Username: ")
 password = input("Password: ").encode()
 
-s = bcrypt.gensalt()
-
 saved_username = "nikoloz"
-saved_password = bcrypt.hashpw("nikaloz".encode(), s)
+saved_password = bcrypt.hashpw(b"nikaloz", bcrypt.gensalt())
 
-
-if name == saved_username and bcrypt.checkpw(password, saved_password):
-    print("Username and Password is correct!")
-elif name != saved_username:
+if name != saved_username:
     print("Username is incorrect!")
-else:
+elif not bcrypt.checkpw(password, saved_password):
     print("Password is incorrect!")
-    
+else:
+    print("Username and Password is correct!")
