@@ -1,25 +1,26 @@
 import random
 
-number = random.randrange(1,1000)
+secret = random.randrange(1,1000)
 attempt = 0
 max_attempts = 10
 
 while attempt < max_attempts:
     try: 
-        answer = int(input(f"Guess the number? "))
+        users_answer = int(input(f"Guess the number? "))
     except ValueError:
         print("Please enter the number!")
         continue
 
-    if answer == number:
+    if users_answer == secret:
         print("You guess is right!")
         break
     else:
         attempt += 1
         print(f"Wrong! Only {max_attempts - attempt} attempt(s) left!")
-        if answer < number:
-            print(f"{answer} is lower than your answer")
+
+        if users_answer < secret:
+            print(f"The number is higher!")
         else:
-            print(f"{answer} is higher than your answer")
+            print(f"The number is lower!")
 else:
-    print(f"You lost. The number was {number}!")
+    print(f"You lost. The number was {secret}!")
