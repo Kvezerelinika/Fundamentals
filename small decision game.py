@@ -23,8 +23,8 @@ def asking():
     for question, answer in question_list:
         users_answer = input(question + " ").strip().lower()
 
-        if users_answer == answer:
-            print("You answer is correct")
+        if users_answer == answer.lower():
+            print("Your answer is correct")
             score += 1
         else:
             print("Your answer is incorrect")
