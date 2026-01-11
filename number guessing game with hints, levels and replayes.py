@@ -25,9 +25,9 @@ def guess_the_number():
             max_number = 1000
         else:
             print("Try number from 1 to 3!")
-            break
+            continue
 
-        secret = random.randrange(1,max_number)
+        secret = random.randrange(1,max_number + 1)
         attempt = 0
 
         print(f"\nI am thinking of number between 1 and {max_number}! Can you guess? You have {max_attempts} attempt(s)")
@@ -57,6 +57,6 @@ def guess_the_number():
         again = input("\nDo you want to play again? (y/n) ").lower()
         if again != "y":
             play_again = False
-            print(f"\nThanks for plating! You won {wins} time(s)!")
+            print(f"\nThanks for playing! You won {wins} time(s)!")
 
 guess_the_number()
