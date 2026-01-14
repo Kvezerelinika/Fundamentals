@@ -1,35 +1,43 @@
+task = None
+
 while True:
     print("1. Add task")
     print("2. Edit task")
     print("3. Remove task")
-    print("4. Settings")
+    print("4. View task")
     print("5. Exit")
 
-    option = int(input("Make your choice: ").strip())
+    option = input("Make your choice: ").strip()
+    if not option.isdigit():
+        print("Please type a digit!")
+        continue
+    choice = int(option)
 
-    if option == 1:
-        print("You can add task now!")
+    if choice == 1:
         title = input("Type title to add: ")
-        task = input("Type task to add: ")
+        task_desc = input("Type task to add: ")
         deadline = input("Type date to add: ")
-    elif option == 2:
-        update = input("What you want to update: ")
-        if update == "title":
-            type = input("Please type the update: ")
-            title == type
-        elif update == "task":
-            type = input("Please type the update: ")
-            task == type
-        elif update == "deadline":
-            type = input("Please type the update: ")
-            deadline == type
+        task = { "title": title, "task": task_desc, "deadline": deadline}
+        print("Your task has been added!")
+
+    elif choice == 2:
+        if not task:
+            print("No task to edit!")
+            continue
+
+        field = input("What do you want to update: (title/task/deadline) ").lower()
+
+        if field in task:
+            task[field] = input("Enter new value: ")
+            print("Task updated!")
         else:
             print("Wrong input!")
-    elif option == 3:
+    elif choice == 3:
+        task = None
         print("Your task has been removed")
-    elif option == 4:
-        print("You can add number now!")
-    elif option == 5:
+    elif choice == 4:
+        print(f"Title: {task["title"]}, Task: {task["task"]}, Deadline: {task["deadline"]}")
+    elif choice == 5:
         print("Thank you for your time!")
         break
     else:
