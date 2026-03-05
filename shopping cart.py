@@ -3,18 +3,27 @@
 def add_to_cart():
     for k, v in products.items():
         print("Available products: \n")
-        print(f"ID: {k}, Name: {v["name"]}")
-        id = input("Please provide product id to add to cart: ")
-        if id == v["name"]:
-            cart.append(id)
-        else:
-            print("Item is not available")
+        print(f"ID: {k}, Name: {v['name']}")
+    pro_id = input("Please provide product id to add to cart: ")
+    if pro_id == k:
+        cart.append(pro_id)
+    else:
+        print("Item is not available")
 
 def remove_from_cart():
-    ...
+    for item in cart:
+        print(f"{item}")
+    id_to_remove = input("Which product do you want to remove? type product ID ")
+    if id_to_remove in cart:
+        cart.pop(id_to_remove)
+    else:
+        print("There is no such product in cart")
 
 def view_cart():
-    ...
+    for item in cart:
+        print(f"{item["name"]}")
+        print(f"{item["price"]}")
+
 
 cart = []
 
